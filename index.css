@@ -1,0 +1,85 @@
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{
+    color: black;
+}
+.ui-widget-header{
+    border: 1px solid grey;
+    background: grey;
+}
+.ui-progressbar {
+  position: relative;
+}
+
+
+
+.progress-label {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #fff;
+}
+#collections{
+		padding: 10px;
+		background-color: #f90;
+		border: 1px solid #ccc;
+		width: 150px;
+		height: 80px;
+		text-align: center;
+		margin-left: 200px;
+	}
+#map { height: 30em; }
+
+.test1 {
+    background-color: red;
+}
+
+.test2 {
+    background-color: blue;
+}
+
+.test3 {
+    background-color: green;
+}
+
+.scrollable {
+    overflow-x: visible;
+    overflow-y: scroll;
+}
+
+.height-25em {
+    height: 25em;
+}
+
+.hid {
+    visibility: hidden;
+}
+
+. {
+    margin-right: 5px;
+}
+
+.hotels div {
+    z-index: 1;
+}
+
+.hotel-draggable {
+	height: 6em;
+	margin-bottom: 5px;
+	z-index: 1000;
+}
+
+#collections-view {
+	height: 50em;
+}
+
+#collections-accordion {
+	position: fixed;
+	width: 46%;
+}
+
+.collection-droppable {
+	height: 7em;
+}
+
+
