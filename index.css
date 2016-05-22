@@ -9,17 +9,6 @@
 .ui-progressbar {
   position: relative;
 }
-#hotels-old{
-
-    width: 200px;
-    height: 200px;
-    border-radius: 25px;
-    position: relative;
-    border: 2px solid #EEA62A;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
 
 
 
@@ -93,6 +82,4 @@
 	height: 7em;
 }
 
-.last-selected{
-    border-color:yellow;
-}
+

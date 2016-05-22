@@ -26,11 +26,11 @@ $(function() {
           });
           request.execute(function(resp) {
 
-          $(".list-users").append("<h3>"+ usersdict[usid].name+"</h3>")
-          $(".list-users").append("<ul><li>"+resp.displayName+"</li>")
+          
+          $(".list-users").append("<div class='list-group-item'>"+resp.displayName+"</div>")
           usersdict[usid].user=resp.displayName;
           if( resp.image != undefined ){
-            $(".list-users").append("<img src="+resp.image.url+"></img></ul>")
+            $(".list-users").append("<img src="+resp.image.url+" height='60' width='60' ></img>")
             usersdict[usid].avatar=resp.image.url
             
           }
@@ -92,7 +92,7 @@ $(function() {
 			$("#" + hotel.id).click();
 			});
 			markers[hotel.id] = mark;
-			collections[hotel.id] = hotel;
+			
 		}
 	}
 	
@@ -102,7 +102,7 @@ $(function() {
 			$('#'+id).removeClass("active")
 			map.removeLayer(markers[id]);
 			markers[hotel.id] = null;
-			collections[hotel.id]=null
+			
 		});
 	}
 	
@@ -186,20 +186,14 @@ $(function() {
 				$("#collections-accordion").replaceWith($("#collections-accordion"));
 				$("#collections-accordion").append("<h3 class='accordion-tab' collection='" + collectionName + "'>" + collectionName + "</h3><div class='collection-droppable'></div>");
 				$("#collections-accordion").accordion();
-                var aria =$(".accordion-tab ").attr("aria-selected") 
-                var len =collections[selectedCollection].hotels.length
-                if( aria){
-                    $("#collections-accordion-selected").append("<h3>"+selectedCollection+"</h3>")   
-                    for (var i=0; i< len ; i++){    
-                        $("#collections-accordion-selected").append("<div>"+collections[selectedCollection].hotels[i].title+"</div>")
-                    }
-                }
+                
+                
 				$(".accordion-tab").click(function () {
-                    
+                    $("#collections-accordion-selected").replaceWith($("#collections-accordion-selected"));
 					selectedCollection = $(this).attr("collection");
                     $("#collections-accordion-selected").empty()
                     var len =collections[selectedCollection].hotels.length
-                    var aria =$(".accordion-tab ").attr("aria-selected")
+                    var aria =$(".accordion-tab ").attr("aria-expanded")
                     
                     if( aria){
                         $("#collections-accordion-selected").append("<h3>"+selectedCollection+"</h3>")   
@@ -207,7 +201,7 @@ $(function() {
                         
                         $("#collections-accordion-selected").append("<div>"+collections[selectedCollection].hotels[i].title+"</div>")
                     }
-                   
+                    
                     }
                      
                 
@@ -215,11 +209,20 @@ $(function() {
 				});
 				$(".collection-droppable").droppable({
 					drop: function( event, ui ) {
+                        $("#collections-accordion-selected").empty()
 						$(this).append(ui.draggable);
 						var hotelId = ui.draggable.attr("hotel");
 						var hotel = findHotelById(hotelId, hotelsData);
 						collections[selectedCollection].hotels.push(hotel);
 						console.log(collections);
+                        var aria =$(".accordion-tab ").attr("aria-expanded") 
+                        var len =collections[selectedCollection].hotels.length
+                        if( aria){
+                            $("#collections-accordion-selected").append("<h3>"+selectedCollection+"</h3>")   
+                            for (var i=0; i< len ; i++){    
+                                $("#collections-accordion-selected").append("<div class='list-group-item'>"+collections[selectedCollection].hotels[i].title+"</div>")
+                            }
+                        }
 					}
 				});
 			}
@@ -241,8 +244,7 @@ $(function() {
             $(".list-users").empty()
             var idhotel= $(".hotel-selected").attr('hotel')
             $.each( usersdict, function( key, val ) {
-                console.log(key)
-                 console.log(idhotel)
+                
                 if( val.idhot === idhotel){
                     console.log(key)
                     handleClientLoad(key)     
@@ -311,13 +313,15 @@ $(function() {
 		    console.log(dataobject)
            
             $.each(dataobject.usuarios, function (key, val) {
-                    $(".addusers").append("<h3>"+val.name+"</h3>"+"<ol><li>"+val.user+"</li><li><img src="+val.avatar+"></img></li></ol>")
+                    console.log(val)
+                    $(".addusers").append("<h3> Usuarios: "+val.name+"</h3>"+"<div class='list-group-item'>"+val.user+"</div><img src="+val.avatar+" height='60' width='60'></img>")
              })
             $.each(dataobject.colecciones, function (key, val) {
-                $(".addcol").append("<h3>"+val.name+"</h3>");
+                 console.log(val)
+                $(".addcol").append("<h3> Colecciones: "+val.name+"</h3>");
                 var len =val.hotels.length           
                 for (var i=0; i< len ; i++){
-                    $(".addcol").append("<div>"+val.hotels[i].title+"</div>")       
+                    $(".addcol").append("<div class='list-group-item'>"+val.hotels[i].title+"</div>")       
                 }
                  
                 
