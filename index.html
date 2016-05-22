@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hoteles</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"></link>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.structure.min.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js" integrity="sha256-55Jz3pBCF8z9jBO1qQ7cIf0L+neuPTD1u7Ytzrp2dqo=" crossorigin="anonymous"></script>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+        <script src="github-api.js"></script>
+        <script src="hoteles.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse"></div>
+        <div class="container-fluid">
+            <div class="row" id="jumbotron">
+                <div class="col-md-12">
+                    <div class="jumbotron" >
+                        <h1>Hoteles</h1>
+                        <p>Haz click para comenzar</p>
+                        <button class="btn btn-lg btn-primary" id="get-hotels">Empezar</button>
+                    </div>
+                </div>
+            </div>
+		<div class="row hidden" id="tabs-container">
+			<div class="col-md-12">
+				<div id="tabs">
+					<ul>
+						<li id="1"><a href="#tabs-1">Hoteles</a></li>
+						<li id="2"><a href="#tabs-2">Colecciones</a></li>
+						<li id="3"><a href="#tabs-3">Gestión</a></li>
+					</ul>
+					<div class="row hidden" id="tabs-1">
+						<div class="col-md-3">
+							<div class="well well-sm scrollable height-25em"
+								id="hotels-container">
+								<div class="list-group" id="hotels">
+									<span class="label label-default">Hoteles</span>
+								</div>
+							</div>
+							<div class="well well-sm scrollable height-25em">
+                                <div id="collections-accordion-selected">
+											
+				                </div>
+                            </div>
+						</div>
+						<div class="col-md-9">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div id="map"></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="row" id="images"></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div id="info"></div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+								<div id="form1"></div>
+                             <div class='addusers'></div>  
+                            <div class='addcol'></div> 
+						</div>
+					</div>
+					<div id="tabs-2">
+						<div class="row">
+							<div class="col-md-12 scrollable" id="collections-view">
+								<div class="row">
+									<div class="col-md-6" id="hotels-draggable-list">
+									
+									</div>
+									<div class=" col-md-6">
+										<div class="well">
+											<h2>Añadir colección</h2>
+											<div class="form-group">
+												<div class="input-group">
+													<input class="form-control" placeholder="Nueva colección" id="new-collection"/>
+													<a class="input-group-addon btn btn-default" href="#" id="add-new-collection">
+														<span class="glyphicon glyphicon-plus"></span>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div id="collections-accordion">
+											
+										</div>
+                                        <div id="form2"></div>
+                                        <div class='addusers'></div>  
+                                        <div class='addcol'></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+                    <div id= "tabs-3">
+                        <div class="row">
+                            <div class="col-md-3" id="hotel-select">
+                            </div>
+                            <div class= "col-md-6" id="info-hotelsel">
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="well">
+                                    <h2>Añadir Usuario Google+ </h2>
+								    <div class="form-group">
+								        <div class="input-group">
+								            <input class="form-control" placeholder="Nueva colección" id="userplus"/>
+								            <a class="input-group-addon btn btn-default" href="#" id="add-user">
+								                <span class="glyphicon glyphicon-plus"></span>
+								            </a>
+				                        </div>
+								    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="well panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="list-users">
+                                        
+                                        </div>
+                                    </div>
+                                    <div id="form3"></div>
+                                    <div class='addusers'></div>  
+                                    <div class='addcol'></div>
+                                </div>
+                                <button class="btn btn-lg btn-primary" id="get-users">Usuarios</button>
+                            </div>
+                        </div>
+                        </div>
+                    
+                     <button id="save" class="btn btn-primary">Guardar</button>
+                    <button id="load" class="btn btn-primary">Cargar</button>
+                    </div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- Modal -->
+        <div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+ 
+                                <img id="image-large" width="100%;"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+              </div>
+        </div>
+    </body>
+</html>
