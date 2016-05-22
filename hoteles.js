@@ -314,9 +314,10 @@ $(function() {
                     $(".addusers").append("<h3>"+val.name+"</h3>"+"<ol><li>"+val.user+"</li><li><img src="+val.avatar+"></img></li></ol>")
              })
             $.each(dataobject.colecciones, function (key, val) {
-                var len =collections[selectedCollection].hotels.length           
+                $(".addcol").append("<h3>"+val.name+"</h3>");
+                var len =val.hotels.length           
                 for (var i=0; i< len ; i++){
-                    $(".addcol").append("<div><h3>"+val.name+"</h3>"+val.hotels[i].title+"</div>")       
+                    $(".addcol").append("<div>"+val.hotels[i].title+"</div>")       
                 }
                  
                 
