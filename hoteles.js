@@ -199,7 +199,7 @@ $(function() {
                         $("#collections-accordion-selected").append("<h3>"+selectedCollection+"</h3>")   
                         for (var i=0; i< len ; i++){
                         
-                        $("#collections-accordion-selected").append("<div>"+collections[selectedCollection].hotels[i].title+"</div>")
+                        $("#collections-accordion-selected").append("<div class='list-group-item'>"+collections[selectedCollection].hotels[i].title+"</div>")
                     }
                     
                     }
